@@ -1,7 +1,15 @@
-// Copyright (c) 2017-2020 Red and Bundle - All Rights Reserved
-// The intellectual work and technical concepts contained in this file are proprietary to Red and Bundle.
-// Unauthorized reverse engineering, distribution or copying of this file, parts hereof, or derived work, via any medium is strictly prohibited without written permission from Red and Bundle.
-// This source code is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// Appends PDF Files to your ForNAV reports
+// Copyright (C) 2020  Red and Bundle
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 tableextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
 {
     fields

@@ -5,9 +5,9 @@
   "version": "1.0.0.0",
   "brief": "Adds an append pdf file to the ForNAV Setup",
   "description": "Adds an append pdf file to the ForNAV Setup",
-  "privacyStatement": "",
-  "EULA": "",
-  "help": "",
+  "privacyStatement": "https://redandbundle.com/privacy/",
+  "EULA": "https://github.com/RedAndBundle/Red.AppendPFD/blob/master/LICENSE",
+  "help": "https://redandbundle.com/contact",
   "url": "https://redandbundle.com",
   "logo": "_media/RedBundleLogo Extension 2020.png",
   "dependencies": [

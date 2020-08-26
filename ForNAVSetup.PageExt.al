@@ -18,8 +18,9 @@ pageextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
         {
             field(RedAppendPDF; "Red Append PDF File Name")
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Append PDF File';
+                ToolTip = 'Specifies the pdf file you want to append to reports.';
 
                 trigger OnDrillDown()
                 var
@@ -27,12 +28,12 @@ pageextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
                     FileManagement: Codeunit "File Management";
                 begin
                     CalcFields("List Report Watermark (Lands.)");
-                    if "Red Append PDF File Name" <> 'Click to import...' then begin
+                    if not ("Red Append PDF File Name" in ['Click to import...', '']) then begin
                         TempBlob.FromRecord(Rec, FieldNo("Red Append PDF"));
                         Hyperlink(FileManagement.BLOBExport(TempBlob, "Red Append PDF File Name", false));
                     end else
-                        ImportWatermarkFromClientFile(FieldNo("Red Append PDF"));
-                    Modify;
+                        ImportPDFFromClientFile(FieldNo("Red Append PDF"));
+                    Modify();
                 end;
             }
         }
@@ -44,20 +45,21 @@ pageextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
         {
             action(RedDeleteAppendPDF)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Append PDF';
+                ToolTip = 'Deletes the pdf file you want to append to reports.';
                 Image = Delete;
 
                 trigger OnAction()
                 var
-                    AreYouSureQst: label 'Are you sure you want to clear %1?';
+                    AreYouSureQst: label 'Are you sure you want to clear %1?', Comment = '%1 is the field to delete';
                 begin
                     if not Confirm(AreYouSureQst, false, FieldCaption("Document Watermark")) then
                         exit;
 
                     "Red Append PDF File Name" := 'Click to import...';
                     Clear("Red Append PDF");
-                    Modify;
+                    Modify();
                 end;
             }
         }

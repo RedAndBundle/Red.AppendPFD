@@ -2,6 +2,10 @@
 
 Appends PDF Files to your ForNAV reports
 
+This software is free to share.
+
+[https://github.com/RedAndBundle/Red.AppendPFD](https://github.com/RedAndBundle/Red.AppendPFD)
+
     Appends PDF Files to your ForNAV reports
     Copyright (C) 2020  Red and Bundle
 

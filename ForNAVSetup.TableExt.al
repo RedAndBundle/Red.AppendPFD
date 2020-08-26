@@ -27,4 +27,43 @@ tableextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
             InitValue = 'Click to import...';
         }
     }
+
+    procedure ImportPDFFromClientFile(Which: Integer): Boolean
+    var
+        TempBlob: Record "ForNAV Core Setup" temporary;
+        FileName: Text;
+        InStream: InStream;
+        OutStream: OutStream;
+    begin
+        UploadIntoStream('Select a file', '', 'PDF files (*.pdf)|*.pdf|All files (*.*)|*.*', FileName, InStream);
+        TempBlob.Blob.CreateOutstream(OutStream);
+        CopyStream(OutStream, InStream);
+
+        if FileName <> '' then begin
+            case Which of
+                FieldNo("Red Append PDF"):
+                    begin
+                        "Red Append PDF" := TempBlob.Blob;
+                        "Red Append PDF File Name" := GetFileNameFromFile(FileName);
+                    end;
+            end;
+            exit(true);
+        end;
+
+        exit(false);
+    end;
+
+    local procedure GetFileNameFromFile(Value: Text): Text
+    var
+        LastPos: Integer;
+        i: Integer;
+    begin
+        while i < StrLen(Value) do begin
+            i := i + 1;
+            if Value[i] = '\' then
+                LastPos := i;
+        end;
+
+        exit(CopyStr(Value, LastPos + 1));
+    end;
 }

@@ -27,7 +27,7 @@ pageextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
                     TempBlob: Codeunit "Temp Blob";
                     FileManagement: Codeunit "File Management";
                 begin
-                    CalcFields("List Report Watermark (Lands.)");
+                    CalcFields("Red Append PDF");
                     if not ("Red Append PDF File Name" in ['Click to import...', '']) then begin
                         TempBlob.FromRecord(Rec, FieldNo("Red Append PDF"));
                         Hyperlink(FileManagement.BLOBExport(TempBlob, "Red Append PDF File Name", false));
@@ -54,7 +54,7 @@ pageextension 88800 "Red ForNAV Setup" extends "ForNAV Setup"
                 var
                     AreYouSureQst: label 'Are you sure you want to clear %1?', Comment = '%1 is the field to delete';
                 begin
-                    if not Confirm(AreYouSureQst, false, FieldCaption("Document Watermark")) then
+                    if not Confirm(AreYouSureQst, false, FieldCaption("Red Append PDF")) then
                         exit;
 
                     "Red Append PDF File Name" := 'Click to import...';
